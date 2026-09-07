@@ -4,6 +4,8 @@ import { Footer } from "@/components/storefront";
 import { siteUrl } from "@/lib/catalog";
 import "./globals.css";
 import "./y2k.css";
+import "./street-scene.css";
+import { StreetScene } from "@/components/street-scene";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: "NXRE — NO RULES EXIST", template: "%s | NXRE" },
@@ -28,6 +30,7 @@ export default function RootLayout({
         </a>
         <Header />
         {children}
+        <StreetScene />
         <Footer />
       </body>
     </html>

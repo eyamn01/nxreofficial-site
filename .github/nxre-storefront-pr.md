@@ -13,6 +13,8 @@ The header wordmark has an early-2000s chrome treatment with layered depth, floa
 
 Deep-red accents extend across the announcement, buttons, navigation, category tabs, and product details. The lookbook adds a chrome orbital graphic, static scanlines, and red framing while keeping the artwork monochrome. Desktop and mobile layouts were visually reviewed and the browser smoke checks pass.
 
+A PS2-inspired street scene appears above the footer across the site, with polygonal SVG streetwear placeholder characters skating, walking, and drinking soda. It has a separate pause/resume control and reduced-motion support. Desktop/mobile rendering, animation, pause/resume, and reduced motion were checked in Chrome.
+
 Validation completed locally:
 
 - Production build: pass; all 21 generated pages completed.
