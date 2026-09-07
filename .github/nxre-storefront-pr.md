@@ -11,6 +11,8 @@ Adds pinned framework dependencies, a reproducible pnpm lockfile, Netlify config
 
 The header wordmark has an early-2000s chrome treatment with layered depth, floating motion, a slow 3D spin, and moving reflections. It preserves the NXRE home link and includes pause/resume, hover/focus pause, and reduced-motion support. Logo motion, pause/resume, reduced motion, and the home link were verified in Chrome.
 
+Deep-red accents extend across the announcement, buttons, navigation, category tabs, and product details. The lookbook adds a chrome orbital graphic, static scanlines, and red framing while keeping the artwork monochrome. Desktop and mobile layouts were visually reviewed and the browser smoke checks pass.
+
 Validation completed locally:
 
 - Production build: pass; all 21 generated pages completed.

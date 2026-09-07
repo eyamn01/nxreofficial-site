@@ -19,6 +19,15 @@ export default function Page() {
             Campaign imagery to follow.
           </p>
         </div>
+        <div className="signal-strip">
+          <div className="signal-orbit" aria-hidden="true">
+            <span>✳</span>
+          </div>
+          <p>
+            NXRE / VISUAL EXPRESSION<strong>NO RULES EXIST.</strong>
+          </p>
+          <div className="signal-bars" aria-hidden="true" />
+        </div>
         <div className="lookbook-grid">
           <figure>
             <Art
