@@ -1,22 +1,37 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { ChromeWordmark } from "@/components/chrome-wordmark";
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [logoPaused, setLogoPaused] = useState(false);
   return (
     <>
       <div className="announcement">
         NXRE — NO RULES EXIST <span>INDEPENDENT EXPRESSION</span>
       </div>
       <header className="header">
-        <Link
-          className="wordmark"
-          href="/"
-          aria-label="NXRE home"
-          onClick={() => setOpen(false)}
-        >
-          NXRE<span aria-hidden="true">✳</span>
-        </Link>
+        <div className={`brand-signature${logoPaused ? " is-paused" : ""}`}>
+          <Link
+            className="wordmark chrome-logo"
+            href="/"
+            aria-label="NXRE home"
+            onClick={() => setOpen(false)}
+          >
+            <ChromeWordmark />
+          </Link>
+          <button
+            type="button"
+            className="logo-motion-control"
+            aria-label={
+              logoPaused ? "Play logo animation" : "Pause logo animation"
+            }
+            onClick={() => setLogoPaused(!logoPaused)}
+            title={logoPaused ? "Play logo animation" : "Pause logo animation"}
+          >
+            <span aria-hidden="true">{logoPaused ? "▶" : "Ⅱ"}</span>
+          </button>
+        </div>
         <nav className="desktop-nav" aria-label="Main navigation">
           <Link href="/shop">The drop</Link>
           <Link href="/collections">Collections</Link>

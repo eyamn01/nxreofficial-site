@@ -9,6 +9,8 @@ The homepage is a standalone landing page with an animated full-height “NO RUL
 
 Adds pinned framework dependencies, a reproducible pnpm lockfile, Netlify configuration, metadata/sitemap/robots/favicon, CI, browser smoke tests, and setup documentation.
 
+The header wordmark has an early-2000s chrome treatment with layered depth, floating motion, a slow 3D spin, and moving reflections. It preserves the NXRE home link and includes pause/resume, hover/focus pause, and reduced-motion support. Logo motion, pause/resume, reduced motion, and the home link were verified in Chrome.
+
 Validation completed locally:
 
 - Production build: pass; all 21 generated pages completed.

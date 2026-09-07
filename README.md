@@ -18,6 +18,7 @@ With Chrome installed and the production server running at http://127.0.0.1:3000
 ## Content
 
 - `src/app/page.tsx`: standalone landing page with an animated abstract hero and newsletter UI. `src/components/hero-background.tsx` provides pause/resume; reduced-motion preferences disable animation.
+- `src/components/chrome-wordmark.tsx`: header wordmark with layered CSS depth, chrome reflections, floating motion, and a slow 3D spin. The header provides a dedicated pause/resume control; hover/focus pauses the logo and reduced-motion preferences keep it static.
 - `/shop`, `/collections`, `/lookbook`, and `/about` are separate destination pages. Shop category links open dedicated collection pages with an active category indicator. Proposed manifesto copy lives on `/about` for owner review.
 - `src/lib/catalog.ts`: supplied product/collection names. Product-to-collection assignments await verified catalog data.
 - `src/components/storefront.tsx`: visibly labeled abstract CSS placeholders, not actual garment designs. Replace with licensed NXRE media using `next/image`, descriptive alt text, dimensions, and responsive sizes. Video needs a poster, muted inline playback, and reduced-motion fallback.
