@@ -66,7 +66,7 @@ export function Footer() {
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} NXRE</span>
         <span>NXREOFFICIAL.COM</span>
-        <Link href="/#manifesto">The mindset ↗</Link>
+        <Link href="/about">The mindset ↗</Link>
       </div>
     </footer>
   );

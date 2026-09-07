@@ -20,8 +20,30 @@ const fs = require("node:fs");
         ),
         `Overflow at ${width}`,
       );
-      assert.equal(await page.locator(".product").count(), 4);
-      assert.equal(await page.locator(".collection-links a").count(), 7);
+      assert.equal(await page.locator(".product").count(), 0);
+      const motion = page.locator(".hero-motion .art-symbol");
+      const before = await motion.evaluate(
+        (el) => getComputedStyle(el).transform,
+      );
+      await page.waitForTimeout(250);
+      assert.notEqual(
+        await motion.evaluate((el) => getComputedStyle(el).transform),
+        before,
+      );
+      await page
+        .getByRole("button", { name: "Pause background animation" })
+        .click();
+      const paused = await motion.evaluate(
+        (el) => getComputedStyle(el).transform,
+      );
+      await page.waitForTimeout(250);
+      assert.equal(
+        await motion.evaluate((el) => getComputedStyle(el).transform),
+        paused,
+      );
+      await page
+        .getByRole("button", { name: "Play background animation" })
+        .click();
       assert(
         await page.getByLabel("Email address", { exact: true }).isDisabled(),
       );
@@ -37,13 +59,52 @@ const fs = require("node:fs");
           .getByRole("link", { name: "The drop" })
           .click();
         assert(await page.locator("#mobile-nav").isHidden());
-        await page.evaluate(() => scrollTo(0, 0));
+        await page.waitForURL("**/shop");
+        await page.goto("http://127.0.0.1:3000");
       }
       await page.screenshot({
         path: `test-results/home-${width}.png`,
         fullPage: true,
       });
+      await page.getByRole("link", { name: "Shop the drop" }).click();
+      await page.waitForURL("**/shop");
+      assert.equal(await page.locator(".product").count(), 4);
+      await page
+        .getByRole("navigation", { name: "Shop categories" })
+        .getByRole("link", { name: "Shirts", exact: true })
+        .click();
+      await page.waitForURL("**/collections/shirts");
+      assert.equal(
+        await page
+          .locator('.category-tabs [aria-current="page"]')
+          .textContent(),
+        "Shirts",
+      );
+      for (const destination of [
+        "/shop",
+        "/collections",
+        "/about",
+        "/lookbook",
+      ]) {
+        await page.goto(`http://127.0.0.1:3000${destination}`);
+        assert(
+          await page.evaluate(
+            () => document.documentElement.scrollWidth <= innerWidth,
+          ),
+          `${destination} overflow at ${width}`,
+        );
+        assert.equal(await page.locator("h1").count(), 1);
+      }
     }
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("http://127.0.0.1:3000");
+    assert.equal(
+      await page
+        .locator(".hero-motion .art-symbol")
+        .evaluate((el) => getComputedStyle(el).animationName),
+      "none",
+    );
+    assert(await page.locator(".motion-control").isHidden());
     for (const path of [
       "products/fallen-seraph",
       "products/control",

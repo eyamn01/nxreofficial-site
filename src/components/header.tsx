@@ -18,11 +18,11 @@ export function Header() {
           NXRE<span aria-hidden="true">✳</span>
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
-          <Link href="/#drop">The drop</Link>
-          <Link href="/#collections">Collections</Link>
-          <Link href="/#lookbook">Lookbook</Link>
+          <Link href="/shop">The drop</Link>
+          <Link href="/collections">Collections</Link>
+          <Link href="/lookbook">Lookbook</Link>
         </nav>
-        <Link className="header-about" href="/#manifesto">
+        <Link className="header-about" href="/about">
           The mindset ↗
         </Link>
         <button
@@ -44,12 +44,12 @@ export function Header() {
         }}
       >
         {[
-          ["The drop", "drop"],
+          ["The drop", "shop"],
           ["Collections", "collections"],
           ["Lookbook", "lookbook"],
-          ["The mindset", "manifesto"],
+          ["The mindset", "about"],
         ].map(([name, id]) => (
-          <Link key={id} href={`/#${id}`} onClick={() => setOpen(false)}>
+          <Link key={id} href={`/${id}`} onClick={() => setOpen(false)}>
             {name} ↗
           </Link>
         ))}

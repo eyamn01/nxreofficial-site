@@ -29,7 +29,7 @@ export default async function ProductPage({
   if (!product) notFound();
   return (
     <main id="main" className="section detail">
-      <Link className="text-link" href="/#drop">
+      <Link className="text-link" href="/shop">
         ← Back to the drop
       </Link>
       <div className="detail-grid">
@@ -42,7 +42,7 @@ export default async function ProductPage({
           <h1>{product.name}</h1>
           <p>Photography and product details will be added here.</p>
           <p className="availability">Purchasing is not available yet.</p>
-          <Link className="button button-light" href="/#drop">
+          <Link className="button button-light" href="/shop">
             Explore the drop <span>↗</span>
           </Link>
         </div>

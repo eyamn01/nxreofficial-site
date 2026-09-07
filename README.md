@@ -17,7 +17,8 @@ With Chrome installed and the production server running at http://127.0.0.1:3000
 
 ## Content
 
-- `src/app/page.tsx`: homepage and proposed manifesto copy for owner review.
+- `src/app/page.tsx`: standalone landing page with an animated abstract hero and newsletter UI. `src/components/hero-background.tsx` provides pause/resume; reduced-motion preferences disable animation.
+- `/shop`, `/collections`, `/lookbook`, and `/about` are separate destination pages. Shop category links open dedicated collection pages with an active category indicator. Proposed manifesto copy lives on `/about` for owner review.
 - `src/lib/catalog.ts`: supplied product/collection names. Product-to-collection assignments await verified catalog data.
 - `src/components/storefront.tsx`: visibly labeled abstract CSS placeholders, not actual garment designs. Replace with licensed NXRE media using `next/image`, descriptive alt text, dimensions, and responsive sizes. Video needs a poster, muted inline playback, and reduced-motion fallback.
 - Four product preview routes, seven collection routes, custom 404, metadata, sitemap, robots, and favicon.
