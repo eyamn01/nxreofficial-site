@@ -1242,3 +1242,36 @@ figcaption {
     animation: none !important;
   }
 }
+
+/* Supplied Star Collection boards stay uncropped at every screen size. */
+.design-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #080b12;
+}
+.product-image-design {
+  aspect-ratio: 1122 / 1402;
+}
+.product-image-design .product-index,
+.product-image-design .product-view {
+  display: none;
+}
+.design-lookbook {
+  align-items: start;
+}
+.design-lookbook figure:nth-child(2) {
+  margin-top: 0;
+}
+.design-lookbook a {
+  display: block;
+}
+.detail-grid > div {
+  min-width: 0;
+}
+.detail-grid > div > .art {
+  aspect-ratio: 4 / 5;
+}
+.detail-copy h1 {
+  overflow-wrap: anywhere;
+}

@@ -17,7 +17,7 @@ export default function Page() {
             </h1>
           </div>
           <p>
-            Four names. One mindset.
+            New signals. Same mindset.
             <br />
             Explore the product previews.
           </p>

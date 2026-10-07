@@ -1,5 +1,29 @@
 import Link from "next/link";
-import { products } from "@/lib/catalog";
+import Image from "next/image";
+import { products, type Product } from "@/lib/catalog";
+export function DesignImage({
+  product,
+  sizes = "(max-width: 760px) 90vw, 45vw",
+}: {
+  product: Product;
+  sizes?: string;
+}) {
+  return product.image ? (
+    <Image
+      className="design-image"
+      src={product.image}
+      alt={product.alt ?? product.name}
+      width={1122}
+      height={1402}
+      sizes={sizes}
+    />
+  ) : (
+    <Art
+      kind={product.artwork ?? "seraph"}
+      label={`${product.name} — abstract placeholder, not a product photo`}
+    />
+  );
+}
 export function Art({
   kind,
   label,
@@ -24,19 +48,25 @@ export function Art({
     </div>
   );
 }
-export function ProductGrid() {
+export function ProductGrid({
+  items = products,
+}: {
+  items?: readonly Product[];
+}) {
   return (
     <div className="product-grid">
-      {products.map((product) => (
+      {items.map((product) => (
         <Link
           className="product"
           href={`/products/${product.slug}`}
           key={product.slug}
         >
-          <div className="product-image">
-            <Art
-              kind={product.artwork}
-              label={`${product.name} — abstract placeholder, not a product photo`}
+          <div
+            className={`product-image${product.image ? " product-image-design" : ""}`}
+          >
+            <DesignImage
+              product={product}
+              sizes="(max-width: 760px) 44vw, 23vw"
             />
             <span className="product-index">[{product.mark}]</span>
             <span className="product-view" aria-hidden="true">
@@ -47,7 +77,11 @@ export function ProductGrid() {
             <h3>{product.name}</h3>
             <span>↗</span>
           </div>
-          <p>Product preview</p>
+          <p>
+            {product.image
+              ? "Star Collection / Design preview"
+              : "Product preview"}
+          </p>
         </Link>
       ))}
     </div>

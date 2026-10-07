@@ -4,7 +4,10 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 
 (async () => {
-  const browser = await chromium.launch({ headless: true, channel: "chrome" });
+  const browser = await chromium.launch({
+    headless: true,
+    channel: process.env.PLAYWRIGHT_CHANNEL || "chrome",
+  });
   const page = await browser.newPage();
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
@@ -68,7 +71,7 @@ const fs = require("node:fs");
       });
       await page.getByRole("link", { name: "Shop the drop" }).click();
       await page.waitForURL("**/shop");
-      assert.equal(await page.locator(".product").count(), 4);
+      assert.equal(await page.locator(".product").count(), 8);
       await page
         .getByRole("navigation", { name: "Shop categories" })
         .getByRole("link", { name: "Shirts", exact: true })
@@ -106,6 +109,10 @@ const fs = require("node:fs");
     );
     assert(await page.locator(".motion-control").isHidden());
     for (const path of [
+      "products/heaven-exe",
+      "products/human-jpg",
+      "products/after-image",
+      "products/soft-error",
       "products/fallen-seraph",
       "products/control",
       "products/slash",
