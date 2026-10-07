@@ -18,12 +18,16 @@ const assert = require("node:assert/strict");
         "products/human-jpg",
         "products/after-image",
         "products/soft-error",
+        "products/good-girl-club",
+        "products/locate",
+        "products/believe-in-the-stars",
+        "products/magazine",
       ]) {
         await page.goto(`http://127.0.0.1:3000/${route}`);
         const images = page.locator(".design-image");
         assert.equal(
           await images.count(),
-          route.startsWith("products/") ? 1 : 4,
+          route.startsWith("products/") ? 1 : 8,
         );
         for (const img of await images.all()) {
           await img.scrollIntoViewIfNeeded();
@@ -59,7 +63,7 @@ const assert = require("node:assert/strict");
       }
     }
     console.log(
-      "PASS: four designs load uncropped on shop, shirts, lookbook and product pages at 1440, 390 and 320 pixels; original links return 200.",
+      "PASS: eight designs load uncropped on shop, shirts, lookbook and product pages at 1440, 390 and 320 pixels; original links return 200.",
     );
   } finally {
     await browser.close();

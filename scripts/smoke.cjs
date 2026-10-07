@@ -71,7 +71,7 @@ const fs = require("node:fs");
       });
       await page.getByRole("link", { name: "Shop the drop" }).click();
       await page.waitForURL("**/shop");
-      assert.equal(await page.locator(".product").count(), 8);
+      assert.equal(await page.locator(".product").count(), 12);
       await page
         .getByRole("navigation", { name: "Shop categories" })
         .getByRole("link", { name: "Shirts", exact: true })
@@ -113,6 +113,10 @@ const fs = require("node:fs");
       "products/human-jpg",
       "products/after-image",
       "products/soft-error",
+      "products/good-girl-club",
+      "products/locate",
+      "products/believe-in-the-stars",
+      "products/magazine",
       "products/fallen-seraph",
       "products/control",
       "products/slash",

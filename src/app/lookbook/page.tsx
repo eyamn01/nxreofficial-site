@@ -18,7 +18,7 @@ export default function Page() {
           <p>
             People. Memories. Glitches.
             <br />
-            Four designs. Still human.
+            Eight designs. Still human.
           </p>
         </div>
         <div className="lookbook-grid design-lookbook">
