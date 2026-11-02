@@ -22,9 +22,9 @@ With Chrome installed and the production server running at http://127.0.0.1:3000
 - `src/app/y2k.css`: shared deep-red accents, chrome-edged buttons, rounded category tabs, technical labels, and lookbook scanlines/orbital artwork. Imports after the base styles so the accent treatment can be adjusted independently.
 - `src/components/street-scene.tsx` and `src/app/street-scene.css`: lightweight polygonal SVG placeholder characters above the footer on every page. A skater, walker, and soda drinker animate independently in a PS2-inspired scene. These are stylized 2D characters with faceted shading, not product previews or downloadable 3D models. Includes pause/resume and reduced-motion support.
 - `/shop`, `/collections`, `/lookbook`, and `/about` are separate destination pages. Shop category links open dedicated collection pages with an active category indicator. Proposed manifesto copy lives on `/about` for owner review.
-- `src/lib/catalog.ts`: supplied product/collection names. Product-to-collection assignments await verified catalog data.
+- `src/lib/catalog.ts`: supplied product/collection names. The eight supplied Star Collection designs are assigned to Shirts; earlier preview names remain available.
 - `src/components/storefront.tsx`: visibly labeled abstract CSS placeholders, not actual garment designs. Replace with licensed NXRE media using `next/image`, descriptive alt text, dimensions, and responsive sizes. Video needs a poster, muted inline playback, and reduced-motion fallback.
-- Four product preview routes, seven collection routes, custom 404, metadata, sitemap, robots, and favicon.
+- Twelve product preview routes, seven collection routes, custom 404, metadata, sitemap, robots, and favicon.
 - No invented prices, specifications, policies, social links, availability dates, or purchase functionality.
 - Newsletter controls are disabled with an availability message. No email is stored or transmitted. Before enabling, connect a server-side email provider, validation, abuse prevention, consent/privacy copy, and truthful success/error states.
 
@@ -39,3 +39,9 @@ With Chrome installed and the production server running at http://127.0.0.1:3000
 This is a deployable preview storefront, not yet a transactional shop. Verify deploy previews are excluded from indexing. Production sitemap URLs use `https://nxreofficial.com`.
 
 References: [Next.js installation](https://nextjs.org/docs/app/getting-started/installation), [Next.js on Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/).
+
+## Star Collection artwork
+
+Heaven.exe, Human.jpg, After Image, Soft Error, Good Girl Club, Locate, Believe in the Stars and mAGAZINE appear in the shop, Shirts collection, lookbook and individual product previews. The original supplied PNGs are in public/designs and linked at full resolution from their product pages. Responsive images preserve the complete boards.
+
+Run node scripts/design-smoke.cjs against the production server to verify image loading, original links and desktop/mobile layouts. Both smoke scripts accept PLAYWRIGHT_CHANNEL=msedge when Chrome is unavailable.

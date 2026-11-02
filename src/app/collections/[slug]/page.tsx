@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { collections } from "@/lib/catalog";
+import { collections, products } from "@/lib/catalog";
+import { ProductGrid } from "@/components/storefront";
 import { CollectionTabs } from "@/components/collection-tabs";
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -27,6 +28,7 @@ export default async function CollectionPage({
   const { slug } = await params;
   const name = collections.find((item) => item.toLowerCase() === slug);
   if (!name) notFound();
+  const items = products.filter((product) => product.category === slug);
   return (
     <main id="main" className="section collection-page">
       <Link className="text-link" href="/collections">
@@ -38,17 +40,21 @@ export default async function CollectionPage({
         <span className="period">.</span>
       </h1>
       <CollectionTabs active={slug} />
-      <div className="collection-empty">
-        <span aria-hidden="true">↗</span>
-        <h2>A space for what’s next.</h2>
-        <p>
-          Products for this collection will appear here once the catalog is
-          available.
-        </p>
-        <Link className="button button-light" href="/shop">
-          View product previews <span>↗</span>
-        </Link>
-      </div>
+      {items.length ? (
+        <ProductGrid items={items} />
+      ) : (
+        <div className="collection-empty">
+          <span aria-hidden="true">↗</span>
+          <h2>A space for what’s next.</h2>
+          <p>
+            Products for this collection will appear here once the catalog is
+            available.
+          </p>
+          <Link className="button button-light" href="/shop">
+            View product previews <span>↗</span>
+          </Link>
+        </div>
+      )}
     </main>
   );
 }

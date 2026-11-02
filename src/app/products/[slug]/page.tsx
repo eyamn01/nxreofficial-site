@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Art } from "@/components/storefront";
+import { DesignImage } from "@/components/storefront";
 import { products } from "@/lib/catalog";
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -33,14 +33,29 @@ export default async function ProductPage({
         ← Back to the drop
       </Link>
       <div className="detail-grid">
-        <Art
-          kind={product.artwork}
-          label={`${product.name} image placeholder, not a product photo`}
-        />
+        <div>
+          <DesignImage product={product} />
+          {product.image && (
+            <a
+              className="text-link"
+              href={product.image}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View full-resolution design ↗
+            </a>
+          )}
+        </div>
         <div className="detail-copy">
           <p className="eyebrow">NXRE / PRODUCT PREVIEW [{product.mark}]</p>
           <h1>{product.name}</h1>
-          <p>Photography and product details will be added here.</p>
+          <p>
+            {product.description ??
+              "Photography and product details will be added here."}
+          </p>
+          {product.image && (
+            <p>Star Collection / Front, back and graphic details.</p>
+          )}
           <p className="availability">Purchasing is not available yet.</p>
           <Link className="button button-light" href="/shop">
             Explore the drop <span>↗</span>
